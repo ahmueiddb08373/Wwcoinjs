@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مرحبًا بك في Mini App!</h1>
+        <button id="sendData">إرسال بيانات إلى تيليجرام</button>
+    </div>
+
+    <script>
+      // التأكد من دعم Telegram Web App
+if (window.Telegram && window.Telegram.WebApp) {
+    let tg = window.Telegram.WebApp;
+    tg.expand(); // توسيع التطبيق ليملأ الشاشة
+
+    document.getElementById("sendData").addEventListener("click", function () {
+        tg.sendData(JSON.stringify({ message: "مرحبًا من الميني آب!" }));
+    });
+} else {
+    alert("هذا المتصفح لا يدعم Telegram Mini Apps!");
+}
+    </script>
+</body>
+</html>
